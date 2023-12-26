@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metas %}
+	<meta name="keywords" content="Site keywords here">
+	<meta name="description" content="">
+{% endblock %}
+
+{% block title%}
+	Galeria de Imagens
+{% endblock%}
+
+{% block content %}
+
+
+
+
+
+	<!-- Start Portfolio Details Area -->
+	<section class="pf-details section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="inner-content">
+						<div class="image-slider">
+							<div class="pf-details-slider">
+								<img src="{{ member.image.url }}" alt="{{ member.image_description }}">
+							</div>
+						</div>
+						<div class="date">
+							<ul>
+								<li><span>Nome :</span> {{ member.name }}</li>
+							</ul>
+						</div>
+						<div class="body-text">
+							
+							{{ member.content|safe }}
+							
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Portfolio Details Area -->
+
+	{% endblock %}

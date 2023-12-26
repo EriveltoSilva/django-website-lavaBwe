@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metas %}
+<meta name="keywords" content="Site keywords here">
+<meta name="description" content="">
+{% endblock %}
+
+{% block title%}
+{{new.title}}
+{% endblock%}
+
+{% block content %}
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs overlay" style="background-image: url('assets/geral/img/lendo-um-caso.avif');">
+	<div class="container">
+		<div class="bread-inner">
+			<div class="row">
+				<div class="col-12">
+					<h1>{{new.title}}</h1>
+					<!-- <ul class="bread-list">
+								<li><a href="index.html">Home</a></li>
+								<li><i class="icofont-simple-right"></i></li>
+								<li class="active">Blog Single</li>
+							</ul> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Single News -->
+<section class="news-single section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-12">
+				<div class="row">
+					<div class="col-12">
+						<div class="single-main">
+							<!-- News Head -->
+							<div class="news-head">
+								<img src="{{ new.image_thumb.url }}" alt="{{new.image_description}}">
+							</div>
+							<!-- News Title -->
+							<!-- <h2 class="news-title">
+								<a href="news-single.html">
+								</a>
+							</h2> -->
+							<!-- Meta -->
+							<div class="meta">
+								<div class="meta-left">
+									<span class="author">
+										<a href="#">
+											Autor:{{new.author.get_full_name}}
+											<img src="" alt="" style="visibility: hidden;">
+										</a>
+									</span>
+									<span class="date"><i class="fa fa-clock-o"></i>{{new.created_at}}</span>
+								</div>
+								<div class="meta-right">
+									<span class="comments">
+										<a href="#">
+											<i class="fa fa-comments"></i>
+											{{ num_comments }}
+										</a>
+									</span>
+									{% comment %}
+									<span class="views"><i class="fa fa-eye"></i>33K Visualizações</span>
+									{% endcomment %}
+								</div>
+							</div>
+							<!-- News Text -->
+							<div class="news-text">
+								{{new.content|safe}}
+							</div>
+							{% comment %}
+							<!-- 
+										<div class="blog-bottom">
+											<ul class="social-share">
+												<li class="facebook"><a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+												<li class="twitter"><a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+												<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+												<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+												<li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+												<ul class="prev-next">
+													<li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+													<li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+												</ul>
+											</ul> 
+										</div>
+									-->
+							{% endcomment %}
+						</div>
+					</div>
+
+					<div class="col-12">
+						<div class="blog-comments">
+							<h2>Todos os comentários</h2>
+							<div class="comments-body">
+								<!-- Single Comments -->
+								{% for comment in comments %}
+								<div class="single-comments">
+									<div class="main">
+
+										<div class="body">
+											<h4>{{comment.name}}</h4>
+											<div class="comment-meta">
+												<span class="meta">
+													<i class="fa fa-calendar"></i>
+													{{comment.created_at}}
+												</span>
+											</div>
+											<p>{{comment.content}}</p>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="comments-form">
+							<h2>Deixa o seu Comentário</h2>
+							<!-- Contact Form -->
+							<form class="form" method="post">
+								{% csrf_token %}
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-12">
+										<div class="form-group">
+											<i class="fa fa-user"></i>
+											<input type="text" name="name" placeholder="Seu Nome" required="required">
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-12">
+										<div class="form-group">
+											<i class="fa fa-envelope"></i>
+											<input type="email" name="email" placeholder="Seu email"
+												required="required">
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-group message">
+											<i class="fa fa-pencil"></i>
+											<textarea name="comment" rows="7" placeholder="Seu comentário"></textarea>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-group button">
+											<button type="submit" class="btn primary"><i
+													class="fa fa-send"></i>Comentar</button>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!--/ End Contact Form -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-12">
+				<div class="main-sidebar">
+					<!-- Single Widget -->
+					<div class="single-widget search">
+						<div class="form">
+							<input type="email" placeholder="Pesquise aqui...">
+							<a class="button" href="#"><i class="fa fa-search"></i></a>
+						</div>
+					</div>
+					<!--/ End Single Widget -->
+					<!-- Single Widget -->
+					<div class="single-widget category">
+						<h3 class="title">Categorias de Publicações</h3>
+						<ul class="categor-list">
+							{% for category in categories %}
+								<li><a href="{% url 'filter-category-new' category.slug %}">{{ category.title }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+					<!--/ End Single Widget -->
+					<!-- Single Widget -->
+					<div class="single-widget recent-post">
+						<h3 class="title">Publicações Recentes
+						</h3>
+						<!-- Single Post -->
+						<div class="single-post">
+							<div class="image">
+								<img src="assets/geral/img/palestra.jpg" alt="#">
+							</div>
+							<div class="content">
+								<h5><a href="#">Os beneficios de um ter um advogado de defesa.</a></h5>
+								<ul class="comment">
+									<li><i class="fa fa-calendar" aria-hidden="true"></i>22 Novembro, 2023</li>
+									<li><i class="fa fa-commenting-o" aria-hidden="true"></i>4</li>
+								</ul>
+							</div>
+						</div>
+						<!-- End Single Post -->
+					</div>
+					<!--/ End Single Widget -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Single News -->
+{% endblock %}

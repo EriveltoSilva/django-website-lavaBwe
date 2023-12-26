@@ -1,0 +1,59 @@
+<!-- Footer Area -->
+<footer id="footer" class="footer ">
+    <!-- Footer Top -->
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="single-footer">
+                        <h2>Nossas midias Socias</h2>
+                        <p>Siga-nos nas redes socias e faça parte da mudança conosco.</p>
+                        <!-- Social -->
+                        <ul class="social">
+                            <li><a target="_blank" href="https://www.linkedin.com/groups/9545634"><i
+                                        class="icofont-facebook"></i></a></li>
+                            <li><a target="_blank"
+                                    href="https://instagram.com/henriqueta_desousa_dasilva?igshid=MzMyNGUyNmU2YQ=="><i
+                                        class="icofont-instagram"></i></a></li>
+                        </ul>
+                        <!-- End Social -->
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-12">
+                    <div class="single-footer">
+                        <h2>Newsletter</h2>
+                        <p>Esteja actualizado com as mais recentes publicações e artigos da LavaBwé 
+                            assinando a nossa mais nova newsletter.</p>
+d
+                        <form action="{% url 'newsletter' %}" method="post" class="newsletter-inner">
+                            {% csrf_token %}
+                            <input name="email" placeholder="Insira seu endereço de email..." class="common-input"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'"
+                                required="" type="email">
+                            <button type="submit" class="button"><i class="icofont icofont-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="copyright-content">
+                        <p>
+                            <a href="#" target="_blank">© 2023 - LavaBwé</a>
+                        </p>
+                        | Todos os Direitos Reservados
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Copyright -->
+</footer>
+<!--/ End Footer Area -->

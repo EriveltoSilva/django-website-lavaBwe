@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metas %}
+	<meta name="keywords" content="Candidatura, bastonária, advogacia">
+	<meta name="description" content="Candidatura de Henriqueta Silva para o Bastonário da Ordem dos Advogados de Angola">
+{% endblock %}
+
+{% block title%}
+    Minha Candidatura
+{% endblock%}
+
+{% block content %}
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    {% for image in carrocel %}
+    <div class="carousel-inner">
+        <div class="carousel-item" data-bs-interval="5000">
+            <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.title }}">
+        </div>
+    </div>
+    {% endfor %}
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+    <!-- Motivo da Candidatura -->
+    <section class="pf-details section candidacy">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="inner-content">
+                        <div class="body-text">
+                            <h3 class="text-primary">Minha Cerimónia</h3>
+                            <p>
+                                A decisão de me candidatar não foi um passo dado ao acaso, mas sim o resultado de uma
+                                vida marcada por uma incessante busca por justiça, dignidade e equidade. Desde os
+                                primórdios da minha jornada como advogada, sempre me inquietei diante das violações de
+                                direitos, do disfuncionamento das instituições e das diversas formas de injustiça que
+                                permeiam nossa sociedade.
+                            </p>
+
+                            <p>
+                                Acredito firmemente que a transformação, a reforma e a inovação para alterar qualquer
+                                fenômeno social exigem coragem, uma visão holística e a determinação de enfrentar
+                                obstáculos. Enxergo os desafios como uma oportunidade de avançar, mesmo diante das
+                                circunstâncias mais adversas, buscando sempre uma mudança positiva
+                            </p>
+
+                            <p>
+                                Neste percurso, enfrentei pedras, abismos, espinhos e desafios inimagináveis, porém,
+                                mantive-me firme em meus princípios. Acredito nos valores fundamentais da justiça, na
+                                dignidade da classe jurídica e no prestígio inerente à Ordem. Ao longo da minha
+                                trajetória ligada à OAA, pude contribuir para avanços significativos, como o projeto
+                                "Direito para Todos" e a implementação do aconselhamento jurídico gratuito.
+                            </p>
+
+                            <p>
+                                Meu maior anseio, minha maior motivação ao me candidatar, é ver uma classe unida,
+                                respeitada, valorizada e reconhecida. Sonho com uma classe que cumpra com excelência
+                                suas atribuições constitucionais, buscando incansavelmente a promoção dos direitos
+                                fundamentais e o acesso à justiça para todos os cidadãos.
+                            </p>
+
+                            <p>
+                                Encaro esta candidatura como uma oportunidade de dar continuidade a essa missão, de
+                                consolidar os avanços já conquistados e de buscar novas formas de fortalecer a classe,
+                                preservando seus valores éticos e promovendo sua união e coesão em prol de um sistema
+                                jurídico mais justo e equitativo.
+                            </p>
+
+                            <p>
+                                Esta jornada, repleta de desafios e obstáculos, fortaleceu minha convicção de que a
+                                advocacia não é apenas uma profissão, mas sim um compromisso com a construção de uma
+                                sociedade mais justa e igualitária. Assim, nesta candidatura, reafirmo meu
+                                comprometimento com essa causa e a determinação de fazer a diferença para a nossa classe
+                                e para a sociedade como um todo
+                            </p>
+
+                            <p>
+                                Atenciosamente,
+                            </p>
+
+                            <p>
+                                Henriqueta Maria Augusto de Sousa da Silva
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Portfolio Details Area -->
+
+    <section id="team">
+        <div class="container">
+            <h2 class="text-primary">Cadidatos a membros do Conselho Nacional</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-12">
+                    <p>
+                        Para mim, o trabalho em grupo é essencial e fundamental na advocacia. Valorizo imensamente a
+                        colaboração, pois acredito que é por meio da interação com colegas, troca de ideias e
+                        perspectivas diversas que podemos alcançar soluções mais completas e eficazes para os desafios
+                        legais da nossa ordem.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row justify-content-around">
+                
+                {% for member in team_members%}
+                <div class="col-lg-3 col-md-6 col-12 m-2">
+                    <div class="card">
+                        <a href="{% url 'team-member-detail' member.slug %}">
+                            <img src="{{ member.image.url }}" class="card-img-top" alt="{{member.image_description}}">
+                        </a>
+                        <div class="card-body bg-primary ">
+                            <!-- <h5 class="card-title text-center text-light"></h5> -->
+                            <p class="card-text text-center text-warning">{{member.name}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-12">
+                    <p>
+                        Para mim, a advocacia é um esforço coletivo em prol da justiça e dos direitos fundamentais.
+                        Assim, valorizo a colaboração como uma ferramenta valiosa para enfrentar os desafios do campo
+                        jurídico, nutrindo um espaço onde ideias inovadoras podem prosperar e a excelência pode ser
+                        constantemente aprimorada
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endblock%}
+
+
+{% block local_script %}
+	<script src="{% static 'assets/geral/js/carrocel.js' %}"></script>
+{% endblock %}

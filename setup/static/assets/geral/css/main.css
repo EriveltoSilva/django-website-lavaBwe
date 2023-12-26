@@ -1,0 +1,15 @@
+:root{
+    --blue-color:#275587;
+    --yellow-color:#fdd003;
+    --dark-blue-color:#275587;
+    --light-blue-color:#1A76D1;
+}
+
+.text-primary{
+    color: var(--dark-blue-color)!important;
+}
+
+.bg-primary{
+    /* background-color: var(--dark-blue-color)!important; */
+    background:linear-gradient(45deg,#1A76D1 ,#275587);
+} 

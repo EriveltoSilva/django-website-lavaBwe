@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metas %}
+<meta name="keywords" content="perguntas, frequentes, Henriqueta, silva, vida,advogacia">
+<meta name="description" content="Perguntas Frequentes sobre a Henriqueta Silva">
+{% endblock %}
+
+{% block title%} Perguntas Frequentes {% endblock%}
+
+{% block content %}
+<!-- Faq Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-12">
+                <img src="{% static 'assets/geral/img/faq.png' %}" alt="">
+            </div>
+
+
+            <div class="col-lg-8 col-12">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    {% for faq in faqs %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapse{{faq.id}}" aria-expanded="false"
+                                aria-controls="flush-collapse{{faq.id}}">
+                                <span>{{faq.id}}.</span>
+                                {{faq.question}}
+                            </button>
+                        </h2>
+                        <div id="flush-collapse{{faq.id}}" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                {{faq.answer}}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="pagination d-flex justify-content-center">
+                    <ul>
+                      {% if faqs.has_previous %}
+                      <li>
+                        <a href="?page={{ faqs.previous_page_number }}">
+                          <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                      </li>
+                      {% endif %}
+            
+                      <li class="active">
+                        <a href="#"> {{faqs.number }} de {{ faqs.paginator.num_pages }} </a>
+                      </li>
+            
+                      {% if faqs.has_next %}
+                      <li>
+                        <a href="?page={{ faqs.next_page_number }}">
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                  </div><!-- End pagination -->
+            </div>
+        </div>
+</section>
+<!--/ End Faq Page -->
+
+{% endblock %}

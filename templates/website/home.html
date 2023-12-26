@@ -1,0 +1,310 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metas %}
+	<meta name="keywords" content="Site keywords here">
+	<meta name="description" content="">
+{% endblock %}
+
+{% block title%}
+	Página Inicial
+{% endblock%}
+
+{% block content %}
+	<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+		{% for image in carrocel %}
+		<div class="carousel-inner">
+			<div class="carousel-item" data-bs-interval="5000">
+				<img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.title }}">
+			</div>
+		</div>
+		{% endfor %}
+
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+
+
+
+
+
+
+
+
+	<!-- Start Why choose -->
+	<section class="why-choose section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-12 mt-2">
+					<!-- Start Choose Left -->
+					<div class="choose-left">
+						<h2>Sobre mim</h2>
+						<p>
+							Henriqueta Maria Augusto de Sousa da Silva é uma advogada dedicada e experiente, cuja
+							trajetória na área jurídica é marcada por uma sólida formação acadêmica e um compromisso
+							inabalável com a advocacia.
+						</p>
+						<p>
+							Com mais de duas décadas de experiência na advocacia, Henriqueta iniciou sua jornada como
+							Gerente do Gabinete Jurídico da SUT – Sociedade Unificada de Tabacos de Angola, Lda, onde
+							desenvolveu habilidades cruciais e conhecimento prático no campo jurídico. Posteriormente,
+							realizou um estágio de advocacia pela Ordem de Advogados de Angola em Luanda, enriquecendo
+							ainda mais sua expertise.
+						</p>
+						<a href="{% url 'about-us' %}" class="btn text-warning">
+							Leia Mais
+							<i class="fa fa-long-arrow-right"></i>
+						</a>
+					</div>
+					<!-- End Choose Left -->
+				</div>
+				<div class="col-lg-6 col-12 mt-2">
+					<img src="{{ image_about.image.url }}" alt="{{ image_about.title }}">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/ End Why choose -->
+
+	<!-- Start Fun-facts -->
+	<div id="fun-facts" class="fun-facts index section overlay mt-2" style="background:url('static/assets/geral/img/lei.jpg');">
+		<div class="container ">
+			<div class="row justify-content-center">
+				<div class="col-lg-3 col-md-6 col-12">
+					<div class="single-fun">
+						<i class="icofont icofont-home"></i>
+						<div class="content ">
+							<span class="counter ">27</span>
+							<p>Anos na Ordem de advogados</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-12">
+					<div class="single-fun">
+						<i class="icofont icofont-user-alt-3"></i>
+						<div class="content">
+							<span class="counter ">2</span>
+							<p>Anos Trabalhando como Gerente</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Fun -->
+					<div class="single-fun">
+						<i class="icofont-simple-smile "></i>
+						<div class="content">
+							<span class="counter">3</span>
+							<p>Entidades Onde Trabalhei</p>
+						</div>
+					</div>
+					<!-- End Single Fun -->
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Fun -->
+					<div class="single-fun">
+						<i class="icofont icofont-table"></i>
+						<div class="content">
+							<span class="counter ">27</span>
+							<p>Anos de Experiência</p>
+						</div>
+					</div>
+					<!-- End Single Fun -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/ End Fun-facts -->
+
+
+
+	<!-- Start portfolio -->
+	<section class="portfolio section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>Minha Galeria de Imagens e Casos</h2>
+						<img src="{% static 'assets/geral/img/section-img.png' %}" alt="icone sinal electrico">
+
+						<p>Cada trabalho, cada caso, cada vida que mudei, foi um futuro que melhorei.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12 col-12">
+					<div class="owl-carousel portfolio-slider">
+						{% for image in galeria %}
+						<div class="single-pf">
+							<img src="{{ image.image.url }}" alt="{{ image.title }}">
+							<a href="{{ image.image.url }}" class="btn">Ver</a>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/ End portfolio -->
+
+
+
+	<!-- Start Blog Area -->
+	<section class="blog section" id="blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>Noticias Recentes</h2>
+						<img src="{% static 'assets/geral/img/section-img.png' %}" alt="#">
+						<p> A leitura é o passaporte para a sabedoria.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+
+				<!-- Single Blog -->
+				{% for new in news %}
+				<div class="col-lg-4 col-md-6 col-12">
+					<div class="single-news">
+						<div class="news-head">
+							<img src="{{ new.image_thumb.url }}" alt="{{ new.image_description }}">
+						</div>
+						<div class="news-body">
+							<div class="news-content">
+								<div class="date">{{ new.created_at }}</div>
+								<h2>
+									<a href="{% url 'news-article' new.slug %}">
+										{{ new.title }}
+									</a>
+								</h2>
+								<p class="text">
+									{{ new.summary|safe }}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				<!-- End Single Blog -->
+
+
+			</div>
+		</div>
+	</section>
+	<!-- End Blog Area -->
+
+
+
+
+
+	<!-- Start Appointment -->
+	<section class="appointment">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>Fale comigo e deixe-me ajuda-lo</h2>
+						<img src="{% static 'assets/geral/img/section-img.png' %}" alt="icone sinal electrico">
+						<p>Na frente de uma advogada, o problema mais complexo tem uma fácil solução</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-12 col-12">
+					<form class="form" method="post" action="{% url 'contacts' %}">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-12">
+								{% include "partials/_alert.html" %}
+							</div>
+
+							<div class="col-lg-12 col-md-12 col-12">
+								<div class="form-group">
+									<input name="name" type="text" placeholder="Seu Nome">
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-12">
+								<div class="form-group">
+									<input name="email" type="email" placeholder="Email">
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-12">
+								<div class="form-group">
+									<input name="subject" type="text" placeholder="Assunto">
+								</div>
+							</div>
+
+							<div class="col-lg-12 col-md-12 col-12">
+								<div class="form-group">
+									<textarea name="message"
+										placeholder="Escreva uma mensagem para nós e entraremos em contacto consigo....."></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-12 col-md-4 col-12">
+							<div class="form-group">
+								<div class="button">
+									<button type="submit" class="btn">Entrar em Contacto</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-lg-6 col-md-12 ">
+					<div class="appointment-image">
+						<img src="{% static 'assets/geral/img/carrocel2.png' %}" alt="#">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Appointment -->
+
+
+
+
+
+	<!-- Start Newsletter Area -->
+	{% comment %} <section class="newsletter section">
+		<div class="container">
+			<div class="row ">
+				<div class="col-lg-6  col-12">
+					<div class="subscribe-text ">
+						<h6>Newsletter</h6>
+						<p>Assine a nossa newsletter e esteja a parte das novidades da campanha.</p>
+					</div>
+				</div>
+
+				<div class="col-lg-6  col-12">
+					<div class="subscribe-form ">
+						<form action="" method="get" target="_blank" class="newsletter-inner">
+							<input name="EMAIL" placeholder="Seu endereço de email" class="common-input"
+								onfocus="this.placeholder = 'Seu endereço de email'"
+								onblur="this.placeholder = 'Seu endereço de email'" required="" type="email">
+							<button class="btn">Subscribe</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> {% endcomment %}
+	<!-- /End Newsletter Area -->
+
+{% endblock  %}
+
+{% block local_script %}
+	<script src="{% static 'assets/geral/js/carrocel.js' %}"></script>
+{% endblock %}

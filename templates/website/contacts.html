@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metas %}
+	<meta name="keywords" content="Contacto, henriqueta, Silva, Apoio, Bastónaria, Ordem, Advogados, Angola">
+	<meta name="description" content="Telefone e Contactos para Apoio de Henriqueta Silva">
+{% endblock %}
+
+{% block title%}
+	Contactos
+{% endblock%}
+
+{% block content %}
+	<!-- Breadcrumbs -->
+	<div class="breadcrumbs overlay index">
+		<div class="container">
+			<div class="bread-inner">
+				<div class="row">
+					<div class="col-12">
+						<h2>Juntos somos mais fortes. Fale conosco</h2>
+						<p class="h6 text-light">Nós + Você = Mudança</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+
+	<!-- Start Contact Us -->
+	<section class="contact-us section">
+		<div class="container">
+			<div class="inner">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="contact-us-left">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d126144.94208465256!2d13.2415488!3d-8.8768512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-PT!2sao!4v1700923194071!5m2!1spt-PT!2sao" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="contact-us-form">
+							<h2>Conte-nos as suas ideias</h2>
+							<p>Sozinhos conseguimos. Mas com você vamos mais longe.</p>
+							<!-- Form -->
+							<form class="form" method="post">
+								{% csrf_token %}
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-12">
+										{% include "partials/_alert.html" %}
+									</div>
+
+									<div class="col-lg-12 col-md-12 col-12">
+										<div class="form-group">
+											<input name="name" type="text" placeholder="Seu Nome">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-12">
+										<div class="form-group">
+											<input name="email" type="email" placeholder="Email">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-12">
+										<div class="form-group">
+											<input name="subject" type="text" placeholder="Assunto">
+										</div>
+									</div>
+
+									<div class="col-lg-12 col-md-12 col-12">
+										<div class="form-group">
+											<textarea name="message"
+												placeholder="Escreva uma mensagem para nós e entraremos em contacto consigo....."></textarea>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-md-4 col-12">
+									<div class="form-group">
+										<div class="button">
+											<button type="submit" class="btn">Entrar em Contacto</button>
+										</div>
+									</div>
+								</div>
+
+							</form>
+							<!--/ End Form -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contact-info">
+				<div class="row">
+					<!-- single-info -->
+					<div class="col-lg-4 col-12 ">
+						<div class="single-info">
+							<i class="icofont icofont-ui-call"></i>
+							<div class="content">
+								<h3>(+244) 926 233 799 | 923 498 277</h3>
+								<p>geral@henriqueta.com</p>
+							</div>
+						</div>
+					</div>
+					<!--/End single-info -->
+					<!-- single-info -->
+					<div class="col-lg-4 col-12 ">
+						<div class="single-info">
+							<i class="icofont-google-map"></i>
+							<div class="content">
+								<h3>Zona Económica</h3>
+								<p>Vivenda Vila Flor</p>
+							</div>
+						</div>
+					</div>
+					<!--/End single-info -->
+					<!-- single-info -->
+					<div class="col-lg-4 col-12 ">
+						<div class="single-info">
+							<i class="icofont icofont-wall-clock"></i>
+							<div class="content">
+								<h3>Abertos de :</h3>
+								<p>Segunda - Sabado</p>
+							</div>
+						</div>
+					</div>
+					<!--/End single-info -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/ End Contact Us -->
+
+{% endblock%}

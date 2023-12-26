@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metas %}
+	<meta name="keywords" content="Site keywords here">
+	<meta name="description" content="">
+{% endblock %}
+
+{% block title%}
+	Notícias
+{% endblock%}
+
+{% block content %}
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    {% for image in carrocel %}
+    <div class="carousel-inner">
+        <div class="carousel-item" data-bs-interval="5000">
+            <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.title }}">
+        </div>
+    </div>
+    {% endfor %}
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+	<!-- Start Blog Area -->
+	<section class="blog section" id="blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<h2>Notícias Recentes.</h2>
+						<img src="{% static 'assets/geral/img/section-img.png' %}" alt="#">
+						<p> A leitura é o passaporte para a sabedoria.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+
+
+				<!-- Single Blog -->
+				{% for new in news %}
+				<div class="col-lg-4 col-md-6 col-12">
+					<div class="single-news">
+						<div class="news-head">
+							<a href="{% url 'news-article' new.id %}">
+								<img src="{{ new.image_thumb.url }}" alt="{{ new.image_description }}">
+							</a>
+						</div>
+						<div class="news-body">
+							<div class="news-content">
+								<div class="date">{{ new.created_at}}</div>
+								<h2>
+									<a href="{% url 'news-article' new.slug %}">
+										{{new.title}}
+									</a>
+								</h2>
+								<p class="text">
+									{{new.summary|safe}}.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				<!-- End Single Blog -->
+				
+			</div>
+		</div>
+
+		<div class="pagination d-flex justify-content-center">
+			<ul>
+			  {% if news.has_previous %}
+			  <li>
+				  <a href="?page={{ news.previous_page_number }}">
+					  <i class="fa-solid fa-arrow-left"></i>
+				</a>
+			  </li>
+			  {% endif %}
+	
+			  <li class="active">
+				<a href="#"> {{news.number }} de {{ news.paginator.num_pages }} </a>
+			  </li>
+	
+			  {% if news.has_next %}
+			  <li>
+				<a href="?page={{ news.next_page_number }}">
+				  <i class="fa-solid fa-arrow-right"></i>
+				</a>
+			  </li>
+			  {% endif %}
+			</ul>
+		  </div><!-- End pagination -->
+	</section>
+	<!-- End Blog Area -->
+{% endblock %}
+
+
+{% block local_script %}
+	<script src="{% static 'assets/geral/js/carrocel.js' %}"></script>
+{% endblock %}
